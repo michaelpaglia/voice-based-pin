@@ -4,15 +4,15 @@
 warning('off', 'all');
 
 % Stores user input spectrograms
-user_input_spectrograms = cell(1, 10);
+user_input_spectrograms = cell(1, 5);
 
 % Compute the spectrogram
-[audio, Fs] = audioread("engineered_seq_2.wav");
+[audio, Fs] = audioread("AudioPin-Sequence.wav");
 audio = audio(:, 1);
 [S, F, T, P] = spectrogram(audio, 256, 250, 256, Fs);
 
 % Determine the number of segments to split the spectrogram into
-num_segments = 10;
+num_segments = 5;
 
 % Calculate the segment length
 segment_length = floor(size(P, 2) / num_segments + 1);
@@ -69,7 +69,7 @@ end
 
 % Initialize an array of sequential guesses. This will be read at the end
 % for the GUI.
-guess_pin = cell(1, 10);
+guess_pin = cell(1, 5);
 
 % Iterate through the array and compare each cell in user input to each
 % spectrogram image in the storedSpectrograms. 
@@ -101,4 +101,4 @@ end
 
 % guess_pin now contains the final answer. GUI will handle visualization.
 % Example output:
-% [4 5 7 1 9 0 4 1]
+% [4 5 7 1 9]
